@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BKS Cincos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ==================== شاشة تسجيل الدخول ==================== -->
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <h1 class="app-title-animated">BKS Cincos</h1>
+            <form id="login-form">
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="اسم المستخدم" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="بريد الالكتروني" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="الرقم السري" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" placeholder="كود الاحاله (اختياري)">
+                </div>
+                <button type="submit" class="action-button">تسجيل الدخول</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==================== التطبيق الرئيسي (مخفي مبدئيًا) ==================== -->
+    <div id="main-app" class="page">
+        <header>
+            <h1 class="app-title-header">BKS Cincos</h1>
+            <div class="header-actions">
+                <button class="header-btn" data-target="deposit-section"><i class="fas fa-wallet"></i> إيداع</button>
+                <button class="header-btn" data-target="withdraw-section"><i class="fas fa-money-bill-wave"></i> سحب</button>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <!-- سيتم حقن المحتوى هنا بواسطة JavaScript -->
+        </main>
+
+        <footer>
+            <nav>
+                <button class="nav-btn active" data-target="home-section"><i class="fas fa-home"></i><span>الرئيسية</span></button>
+                <button class="nav-btn" data-target="vip-section"><i class="fas fa-star"></i><span>VIP</span></button>
+                <button class="nav-btn" data-target="tasks-section"><i class="fas fa-tasks"></i><span>المهام</span></button>
+                <button class="nav-btn" data-target="invite-section"><i class="fas fa-users"></i><span>دعوة</span></button>
+                <button class="nav-btn" data-target="me-section"><i class="fas fa-user"></i><span>أنا</span></button>
+            </nav>
+        </footer>
+    </div>
+
+    <!-- ==================== رسالة الترحيب المنبثقة ==================== -->
+    <div id="welcome-popup" class="popup-overlay">
+        <div class="popup-content">
+            <h2 class="popup-title">مرحبًا بك في BKS Cincos!</h2>
+            <p>للربح من الإعلانات والمهام اليومية.</p>
+            <p><strong>خدمة العملاء Telegram:</strong> <a href="https://t.me/ta_ta_ta_123" target="_blank">انقر هنا</a></p>
+            <div class="popup-details">
+                <p>💡 أسرع طريقة للربح هي بناء فريقك الخاص وكسب عمولات سخية.</p>
+                <p>💰 مكافأة 15% على الإيداعات التي تتجاوز 1 USDT.</p>
+                <p>🎁 اربح حتى 5-300 USDT في اليانصيب عند إيداع أعضاء فريقك.</p>
+                <p>💸 احصل على عمولة 26% عند دعوة الأصدقاء للإيداع.</p>
+            </div>
+            <button id="close-popup" class="action-button">موافق</button>
+        </div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>
