@@ -1,0 +1,378 @@
+/* --- Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+/* --- متغيرات الألوان --- */
+:root {
+    --primary-color: #0D9DE3;
+    --secondary-color: #05668D;
+    --background-start: #141E30;
+    --background-end: #243B55;
+    --text-color: #E0E0E0;
+    --card-background: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --success-color: #28a745;
+    --gold-color: #FFD700;
+}
+
+/* --- الأنماط العامة --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(-45deg, var(--background-start), var(--background-end), var(--secondary-color), var(--primary-color));
+    background-size: 400% 400%;
+    color: var(--text-color);
+    animation: gradientBG 20s ease infinite;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- نظام الصفحات --- */
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* --- شاشة تسجيل الدخول --- */
+#login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.login-container {
+    padding: 40px 30px;
+    background: var(--card-background);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+.app-title-animated {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    animation: text-flicker 3s linear infinite;
+}
+@keyframes text-flicker {
+    0% { opacity:0.1; text-shadow: 0 0 5px #fff, 0 0 10px var(--primary-color); }
+    2% { opacity:1; text-shadow: 0 0 10px #fff, 0 0 20px var(--primary-color); }
+    /* ... (rest of flicker animation) */
+}
+.input-group {
+    margin-bottom: 20px;
+}
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- الأزرار العامة --- */
+.action-button {
+    width: 100%;
+    padding: 12px;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.action-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(13, 157, 227, 0.4);
+}
+
+/* --- التطبيق الرئيسي --- */
+#main-app {
+    padding-bottom: 80px; /* Space for footer */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--card-background);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+.app-title-header {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+.header-btn {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+.header-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+.header-btn .fas {
+    margin-left: 5px;
+}
+
+main {
+    padding: 15px;
+}
+.section {
+    display: none;
+}
+.section.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* --- شريط السحب المتحرك --- */
+.scrolling-banner-container {
+    background: rgba(0,0,0,0.2);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+.scrolling-banner {
+    display: inline-block;
+    animation: scroll-left 25s linear infinite;
+}
+.scrolling-banner span {
+    display: inline-block;
+    margin: 0 30px;
+    color: var(--success-color);
+}
+.scrolling-banner .fas {
+    margin-right: 8px;
+}
+@keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* --- بنر الخطط --- */
+.plans-slider {
+    margin-bottom: 20px;
+    background: var(--card-background);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* --- قسم VIP --- */
+.vip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+.vip-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.vip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.vip-card h3 {
+    color: var(--gold-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.vip-card .price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+}
+.vip-card .details p {
+    margin-bottom: 10px;
+}
+.vip-card .details strong {
+    color: var(--primary-color);
+}
+
+/* --- قسم الإيداع والسحب --- */
+.payment-list .item {
+    display: flex;
+    align-items: center;
+    background: var(--card-background);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+.payment-list .item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.payment-list .logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+}
+.payment-list .info {
+    flex-grow: 1;
+}
+.payment-list .address {
+    font-size: 0.8rem;
+    word-break: break-all;
+    color: lightgray;
+}
+.copy-btn {
+    background: none;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* --- قسم المهام --- */
+.task-grid .task {
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--secondary-color);
+}
+.task.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+    border-left-color: #6c757d;
+}
+.task.locked::after {
+    content: " (مقفل)";
+    color: #ffc107;
+}
+
+/* --- قسم "أنا" --- */
+.profile-card {
+    background: var(--card-background);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.profile-card p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+.profile-card strong {
+    color: var(--primary-color);
+}
+
+/* --- النافذة المنبثقة --- */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    background: linear-gradient(135deg, var(--background-end), var(--background-start));
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid var(--primary-color);
+    animation: zoomIn 0.4s ease-out;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.popup-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+.popup-details {
+    text-align: right;
+    margin: 20px 0;
+}
+.popup-details p {
+    margin-bottom: 10px;
+}
+
+/* --- شريط التنقل السفلي --- */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--card-background);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-color);
+}
+footer nav {
+    display: flex;
+    justify-content: space-around;
+}
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 10px;
+    cursor: pointer;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+.nav-btn .fas {
+    font-size: 1.2rem;
+}
+.nav-btn.active {
+    color: var(--primary-color);
+}
